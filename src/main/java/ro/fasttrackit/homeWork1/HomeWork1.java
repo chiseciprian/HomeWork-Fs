@@ -1,6 +1,6 @@
-package ro.fasttrackit.tema1;
+package ro.fasttrackit.homeWork1;
 
-import ro.fasttrackit.tema1.Project.ProjectBuilder;
+import ro.fasttrackit.homeWork1.Project.ProjectBuilder;
 
 import java.util.ArrayList;
 import java.util.List;

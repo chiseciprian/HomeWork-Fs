@@ -1,4 +1,4 @@
-package ro.fasttrackit.tema1;
+package ro.fasttrackit.homeWork1;
 
 public enum Category {
     ELECTRONICS,
