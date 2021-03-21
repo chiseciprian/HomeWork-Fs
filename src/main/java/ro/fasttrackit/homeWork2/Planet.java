@@ -24,6 +24,6 @@ public enum Planet {
     }
 
     double getWeightOnEarth(double weight) {
-        return weight / ratio;
+        return weight * ratio;
     }
 }
