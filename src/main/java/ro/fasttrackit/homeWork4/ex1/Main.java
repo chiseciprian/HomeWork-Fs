@@ -1,4 +1,4 @@
-package ro.fasttrackit.homeWork4;
+package ro.fasttrackit.homeWork4.ex1;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -10,11 +10,11 @@ public class Main {
         System.out.println(new Student("Ana", LocalDate.of(1999, 12, 1), 8));
         System.out.println(new Student("Mircea", 21, 10));
 
-        Student student1 = new Student("Steli", LocalDate.of(1999, 12, 1), 8);
-        Student student2 = new Student("Cipri", 21, 10);
-        Student student3 = new Student("Radu", 21, 10);
-        Student student4 = new Student("Cornel", 21, 10);
-        Student student5 = new Student("Augustin", 21, 10);
+        Student student1 = new Student("Cipri", LocalDate.of(1999, 12, 1), 8);
+        Student student2 = new Student("Mircea", 21, 10);
+        Student student3 = new Student("Steli", 21, 10);
+        Student student4 = new Student("Alex", 21, 10);
+        Student student5 = new Student("Dmitry", 21, 10);
         StudentService studentService = new StudentService(List.of(student1, student2, student3, student4, student5));
 
         System.out.println(studentService.averageStudentsGrades());

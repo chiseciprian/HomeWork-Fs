@@ -1,4 +1,4 @@
-package ro.fasttrackit.homeWork4;
+package ro.fasttrackit.homeWork4.ex1;
 
 import java.util.ArrayList;
 import java.util.List;
