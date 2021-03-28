@@ -1,9 +1,7 @@
 package ro.fasttrackit.homeWork4.ex1;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.List;
-import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,20 +24,4 @@ public class Main {
         System.out.println(studentService.getStudentPlace(student4));
         System.out.println(studentService.getStudentPlace(student5));
     }
-
-    public record Student(String name, LocalDate birthDate, int grades) {
-        public Student(String name, int age, int grades) {
-            this(name, setRandomBirthday(age), grades);
-        }
-
-        private static LocalDate setRandomBirthday(int age) {
-            Random random = new Random();
-            return LocalDate.now().minusYears(age).withMonth(random.nextInt(12) + 1).withDayOfMonth(random.nextInt(28) + 1);
-        }
-
-        public int getAge() {
-            return Period.between(birthDate, LocalDate.now()).getYears();
-        }
-    }
-
 }

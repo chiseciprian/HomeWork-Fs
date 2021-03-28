@@ -1,22 +1,26 @@
 package ro.fasttrackit.homeWork4.ex1;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class StudentService {
-    private List<Main.Student> students;
+import static java.util.stream.Collectors.*;
 
-    public StudentService(List<Main.Student> students) {
+public class StudentService {
+    private List<Student> students;
+
+    public StudentService(List<Student> students) {
         this.students = new ArrayList<>(students);
     }
 
     public String averageStudentsGrades() {
         return students.stream()
                 .collect(Collectors.teeing(
-                        Collectors.mapping(Main.Student::name, Collectors.toList()),
-                        Collectors.averagingInt(Main.Student::grades),
+                        mapping(student -> student.name() + ", ", joining()),
+                        averagingInt(Student::grades),
                         (names, average) -> names + " have an average grade of " + average
                 ));
     }
@@ -27,7 +31,7 @@ public class StudentService {
                 .collect(Collectors.toList());
     }
 
-    public String getStudentPlace(Main.Student student) {
+    public String getStudentPlace(Student student) {
         return switch (students.indexOf(student)) {
             case 0, 1, 2 -> "1st grade";
             case 3 -> "5th grade";
@@ -56,6 +60,21 @@ public class StudentService {
                 """.formatted("Biology", 2);
         List<String> courses = List.of(course1, course2, course3);
         return courses.get(new Random().nextInt(courses.size()));
+    }
+}
+
+record Student(String name, LocalDate birthDate, int grades) {
+    public Student(String name, int age, int grades) {
+        this(name, setRandomBirthday(age), grades);
+    }
+
+    private static LocalDate setRandomBirthday(int age) {
+        Random random = new Random();
+        return LocalDate.now().minusYears(age).withMonth(random.nextInt(12) + 1).withDayOfMonth(random.nextInt(28) + 1);
+    }
+
+    public int getAge() {
+        return Period.between(birthDate, LocalDate.now()).getYears();
     }
 }
 
